@@ -36,10 +36,8 @@ def parse_salary_string(salary_string: str) -> Tuple[Optional[float], Optional[f
     return numbers[0] * multiplier, numbers[0] * multiplier, unit
 
 def salary_normalize(df: pd.DataFrame) -> pd.DataFrame:
-    salary_data = df["salary"].apply(parse_salary_string)
-    df["min_salary"] = [item[0] for item in salary_data]
-    df["max_salary"] = [item[1] for item in salary_data]
-    df["salary_unit"] = [item[2] for item in salary_data]
+    df_clean = df.copy()
+    salary_data = df_clean["salary"].apply(parse_salary_string)
 
     df_clean[["min_salary", "max_salary", "salary_unit"]] = pd.DataFrame(salary_data.tolist(), index=df_clean.index)
 
