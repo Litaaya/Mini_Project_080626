@@ -41,4 +41,6 @@ def salary_normalize(df: pd.DataFrame) -> pd.DataFrame:
     df["max_salary"] = [item[1] for item in salary_data]
     df["salary_unit"] = [item[2] for item in salary_data]
 
-    return df
+    df_clean[["min_salary", "max_salary", "salary_unit"]] = pd.DataFrame(salary_data.tolist(), index=df_clean.index)
+
+    return df_clean
