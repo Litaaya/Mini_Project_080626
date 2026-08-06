@@ -3,7 +3,7 @@ import pandas as pd
 from typing import Tuple, Optional
 
 def parse_salary_string(salary_string: str) -> Tuple[Optional[float], Optional[float], Optional[str]]:
-    if not salary_string or pd.isna(salary_string):
+    if pd.isna(salary_string) or not str(salary_string).strip():
         return None, None, None
 
     s = str(salary_string).strip().lower()
