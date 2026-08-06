@@ -7,7 +7,7 @@ for p in Province.iter_all():
     valid_cities.add(p.name.replace("Thành phố ", "").replace("Tỉnh ", ""))
 
 def format_address(address_string: str) -> str:
-    if pd.isna(address_string) or not str(address_string):
+    if pd.isna(address_string) or not str(address_string).strip():
         return ""
 
     parts = [p.strip() for p in str(address_string).split(":") if p.strip()]
