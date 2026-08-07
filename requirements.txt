@@ -4,3 +4,4 @@ vietnam-provinces
 sqlalchemy
 psycopg2
 schedule
+jupyter
