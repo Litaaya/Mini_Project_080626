@@ -35,7 +35,9 @@ def run_pipeline() -> None:
         df_raw = extract(raw_data_path)
         logging.info(f"extracted {len(df_raw)} records")
 
+        logging.info("Validate records")
         df_valid, df_dlq = validate_records(df_raw)
+        logging.info(f"Valid: {len(df_valid)} records, Invalid {len(df_dlq)} records")
 
         logging.info("Transforming data")
         df_clean = transform(df_valid)
