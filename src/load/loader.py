@@ -1,7 +1,7 @@
 import pandas as pd
 from sqlalchemy import create_engine
 
-db_url = "postgresql://postgres:postgres@localhost:5432/db"
+db_url = "postgresql://postgres:postgres@localhost:5432/mini_project_db"
 
 def load(df: pd.DataFrame, table_name: str = "cleaned_jobs") -> None:
     if df.empty:
