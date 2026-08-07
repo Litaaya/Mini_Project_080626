@@ -16,7 +16,7 @@ def run_pipeline() -> None:
 
     try:
         logging.info("Extracting data")
-        df_raw = extract()
+        df_raw = extract(raw_data_path)
         logging.info(f"extracted {len(df_raw)} records")
 
         logging.info("Transforming data")
