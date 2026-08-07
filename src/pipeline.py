@@ -2,7 +2,7 @@ import logging
 from extract import extract
 from load import load
 from transform import transform
-from config import default_table_name
+from config import default_table_name, raw_data_path
 
 logging.basicConfig(
     level=logging.INFO,
