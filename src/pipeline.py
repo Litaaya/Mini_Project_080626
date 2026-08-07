@@ -27,6 +27,7 @@ column_order = [
         "link_description"
     ]
 
+def run_pipeline() -> None:
     logging.info("Pipeline started")
 
     try:
