@@ -11,9 +11,7 @@ logging.basicConfig(
     datefmt="%Y-%m-%d %H:%M:%S",
 )
 
-
-def run_pipeline() -> None:
-    column_order = [
+column_order = [
         "created_date",
         "job_title",
         "clean_job_title",
