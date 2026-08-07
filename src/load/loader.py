@@ -15,6 +15,5 @@ def load(df: pd.DataFrame,database_url: str, table_name: str) -> None:
             index=False,
             method="multi"
         )
-    except Exception as e:
-        print(e)
-        raise e
+    finally:
+        engine.dispose()
