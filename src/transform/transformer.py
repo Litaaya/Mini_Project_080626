@@ -1,7 +1,7 @@
 import pandas as pd
-from src.transform.address_normalize import address_normalize
-from src.transform.job_title_normalize import job_title_normalize
-from src.transform.salary_normalize import salary_normalize
+from .address_normalize import address_normalize
+from .job_title_normalize import job_title_normalize
+from .salary_normalize import salary_normalize
 
 
 def transform(df: pd.DataFrame) -> pd.DataFrame:
