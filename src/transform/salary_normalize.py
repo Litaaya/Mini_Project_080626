@@ -16,7 +16,7 @@ def parse_salary_string(salary_string: str) -> Tuple[Optional[float], Optional[f
     if unit == ("USD"):
         s_clean = s.replace(",", "")
     else:
-        s_clean = s.replace(".", "").replace(",", ".")
+        s_clean = s.replace(",", ".")
     numbers = [float(n) for n in re.findall(r"\d+\.?\d*", s_clean)]
 
     if not numbers:

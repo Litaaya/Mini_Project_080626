@@ -12,7 +12,7 @@ def is_valid_salary(salary_string: str) -> bool:
     if unit == "USD":
         s_clean = s.replace(",", "")
     else:
-        s_clean = s.replace(".", "").replace(",", ".")
+        s_clean = s.replace(",", ".")
     numbers = [float(n) for n in re.findall(r"\d+\.?\d*", s_clean)]
 
     if len(numbers) >= 2 and numbers[0] > numbers[1]:
@@ -44,7 +44,7 @@ def validate_records(df: pd.DataFrame) -> Tuple[pd.DataFrame, pd.DataFrame]:
 
     valid_time = df["time"].apply(is_valid_time)
 
-    valid_url = df["job_url"].notna() & df["job_url"].astype(str).str.strip().str.lower().str.startswith("https://")
+    valid_url = df["link_description"].notna() & df["link_description"].astype(str).str.strip().str.lower().str.startswith("https://")
 
     valid_mask = valid_date & valid_company & valid_salary & valid_address & valid_time & valid_url
     valid_df = df[valid_mask].copy()
