@@ -1,6 +1,7 @@
 import logging
 from extract import extract
 from load import load
+from config import database_url
 from transform import transform, validate_records
 from config import default_table_name, raw_data_path, cleaned_data_path, dlq_data_path
 
@@ -12,6 +13,22 @@ logging.basicConfig(
 
 
 def run_pipeline() -> None:
+    column_order = [
+        "created_date",
+        "job_title",
+        "clean_job_title",
+        "normalized_job_title",
+        "company",
+        "salary",
+        "min_salary",
+        "max_salary",
+        "salary_unit",
+        "address",
+        "clean_address",
+        "time",
+        "link_description"
+    ]
+
     logging.info("Pipeline started")
 
     try:
@@ -23,13 +40,14 @@ def run_pipeline() -> None:
 
         logging.info("Transforming data")
         df_clean = transform(df_valid)
+        df_clean = df_clean[column_order]
         logging.info("Transforming data complete")
 
         df_clean.to_csv(cleaned_data_path, index=False)
         df_dlq.to_csv(dlq_data_path, index=False)
 
         logging.info("Loading data")
-        load(df_clean, table_name=default_table_name)
+        load(df_clean, database_url=database_url, table_name=default_table_name)
         logging.info("Loading data complete")
 
         logging.info("Pipeline completed")
