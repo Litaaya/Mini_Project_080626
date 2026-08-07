@@ -36,6 +36,9 @@ def parse_salary_string(salary_string: str) -> Tuple[Optional[float], Optional[f
     return numbers[0] * multiplier, numbers[0] * multiplier, unit
 
 def salary_normalize(df: pd.DataFrame) -> pd.DataFrame:
+    if "salary" not in df.columns:
+        raise KeyError("Missing required column: 'salary'")
+
     df_clean = df.copy()
     salary_data = df_clean["salary"].apply(parse_salary_string)
 

@@ -33,6 +33,9 @@ def format_address(address_string: str) -> str:
     return "; ".join(branches)
 
 def address_normalize(df: pd.DataFrame) -> pd.DataFrame:
+    if "address" not in df.columns:
+        raise KeyError("Missing required column: 'address'")
+
     df_clean = df.copy()
 
     df_clean["clean_address"] = df_clean["address"].apply(format_address)
