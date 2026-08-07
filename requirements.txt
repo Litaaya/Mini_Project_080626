@@ -3,3 +3,4 @@ pytest
 vietnam-provinces
 sqlalchemy
 psycopg2
+schedule
