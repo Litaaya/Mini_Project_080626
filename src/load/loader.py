@@ -1,19 +1,17 @@
 import pandas as pd
 from sqlalchemy import create_engine
 
-db_url = "postgresql://postgres:postgres@localhost:5432/mini_project_db"
-
-def load(df: pd.DataFrame, table_name: str = "cleaned_jobs") -> None:
+def load(df: pd.DataFrame,database_url: str, table_name: str) -> None:
     if df.empty:
         print("No data found")
         return
 
     try:
-        engine = create_engine(db_url)
+        engine = create_engine(database_url)
         df.to_sql(
             name=table_name,
             con=engine,
-            if_exists="append",
+            if_exists="replace",
             index=False,
             method="multi"
         )
