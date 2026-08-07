@@ -6,7 +6,7 @@ base_dir = Path(__file__).resolve().parent.parent
 data_dir = base_dir / "data"
 raw_data_path = data_dir / "raw" / "data.csv"
 cleaned_data_path = data_dir / "processed" / "cleaned_data.csv"
-dlq_data_path = data_dir / "dlq"
+dlq_data_path = data_dir / "dlq" / "invalid_records.csv"
 
 postgres_user = os.getenv("POSTGRES_USER", "postgres")
 postgres_password = os.getenv("POSTGRES_PASSWORD", "postgres")
