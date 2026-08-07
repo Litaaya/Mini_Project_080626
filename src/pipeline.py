@@ -52,9 +52,12 @@ def run_pipeline() -> None:
 
         logging.info("Pipeline completed")
 
-    except Exception as e:
-        logging.error(f"Pipeline failed: {e}")
-        raise e
+    except FileNotFoundError as e:
+        logging.error(f"Input file not found: {e}")
+        raise
+    except Exception:
+        logging.exception("Unexpected pipeline failure")
+        raise
 
 
 if __name__ == "__main__":
